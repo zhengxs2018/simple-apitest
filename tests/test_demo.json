@@ -1,0 +1,58 @@
+[
+  {
+    "parameters": [
+      {
+        "username": "admin",
+        "password": "123456",
+        "nickname": "超级管理员"
+      },
+      {
+        "username": "zs",
+        "password": "123456",
+        "nickname": "张三"
+      }
+    ],
+    "variables": {
+      "token": "ada45sd6as5dsa"
+    },
+    "name": "测试用户账号",
+    "request": {
+      "base_url": "{{ BASE_URL }}",
+      "headers": {},
+      "cookies": {},
+      "hooks": {
+        "response": [
+          "{{ response_hook_func }}"
+        ]
+      }
+    },
+    "tests": [
+      {
+        "name": "测试 {{ nickname }} 登录",
+        "hooks": {
+          "setup": [
+            "{{ setup_hook_func }}"
+          ],
+          "teardown": [
+            "{{ teardown_hook_func }}"
+          ]
+        },
+        "request": {
+          "url": "/get",
+          "method": "GET",
+          "hooks": {
+            "response": [
+              "{{ response_hook_func }}"
+            ]
+          }
+        },
+        "validate": [
+          {
+            "check": "{{ res.status_code == 200 }}",
+            "message": "检查状态码是否为200"
+          }
+        ]
+      }
+    ]
+  }
+]
