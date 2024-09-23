@@ -19,7 +19,7 @@ $ python runtest.py
 
 所有数据都可以使用 [jinja2] 的模板变量, 包括字典的 key 哦，语法为 `{{ variable }}`
 
-```json
+```jsonc
 [
   {
     // 参数化设置，可以使用的上下文变量为：globals, os.environ
